@@ -8,8 +8,13 @@ let addTime = dayStart.clone();
 let duration = moment.duration(dayEnd.diff(addTime));
 let hoursDif = parseInt(duration.asHours());
 let hour = addTime.format("h a");
+let localStorageId = hour.replace(/ /g,"-");
 let currentDayElement = $("#currentDay").text(now.format("dddd, MMMM Do YYYY"));
 let containerElement = $(".container");
+let events = localStorage.getItem('events');
+events = events ? JSON.parse(events) : {};
+let localStorageValue = events[localStorageId];
+console.log(events);
 
 addTimeBlocks();
 
@@ -33,9 +38,13 @@ function addTimeBlocks () {
         spanInputGrpTxtElement.text(hour);
         prependInputGrpElement.append(spanInputGrpTxtElement);
         inputGrpElement.append(txtAreaFormControlElement);
+        txtAreaFormControlElement.attr("id", "input-" + localStorageId);
+        console.log(events[localStorageId]);
+        localStorageValue ? $("#input-" + localStorageId).val(localStorageValue) : $("#input-" + localStorageId).val("");
+        txtAreaFormControlElement.css("color", "black");
         inputGrpElement.append(appendInputGrpElement);
         appendInputGrpElement.append(saveBtnElement);
-        saveBtnElement.attr("id", hour.replace(/ /g,"-"));
+        saveBtnElement.attr("id", localStorageId);
 
         let past = now.isAfter(addTime, "hour");
         let present = now.isSame(addTime, "hour");
@@ -51,13 +60,18 @@ function addTimeBlocks () {
 
         addTime = addTime.add(1, "hour");
         hour = addTime.format("h a");
+        localStorageId = hour.replace(/ /g,"-");
+        localStorageValue = events[localStorageId];
         duration = moment.duration(dayEnd.diff(addTime));
         hoursDif = parseInt(duration.asHours());
     }
 }
 
 function saveEvent() {
-    console.log(this.id);
+    let inputId = "#input-" + this.id;
+    let inputValue = $(inputId).val();
+    events[this.id] = inputValue;
+    localStorage.setItem('events', JSON.stringify(events));
 }
 
 $(".saveBtn").click(saveEvent);
