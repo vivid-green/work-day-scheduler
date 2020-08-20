@@ -58,14 +58,28 @@ textarea{
 }
 
 .saveBtn {
-  border-left: 1px solid black;
+  border: none;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  background-image: url("./../Assets/save.png");
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn {
+  width: 80px;
 }
 
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+
+.input-group-text {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  width: 70px;
 }
