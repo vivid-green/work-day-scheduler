@@ -1,7 +1,7 @@
 # Description
 This is a work day planner to manage your work day. You can input events for each hour for your 9 to 5 and view color changes for the current time in relation to the work day.
 
-Work Day Scheduler [Click here to Visit](https://vivid-green.github.io/work-day-scheduler/)
+Work Day Scheduler [Click here to Visit](https://vivid-green.github.io/work-day-scheduler/Develop/)
 
 ![Website Screenshot](/Assets/website-screenshot.png)
 
