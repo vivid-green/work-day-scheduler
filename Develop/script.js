@@ -1,6 +1,6 @@
-let now = moment(moment(), "h a");
+// let now = moment(moment(), "h a");
 // now variable below is used for testing by adjusting the "current time" to whatever you want.
-// let now = moment("1 pm", "h a");
+let now = moment("1 pm", "h a");
 let dayStart = moment("9 am", "h a");
 let dayEnd = moment("5 pm", "h a");
 let addTime = dayStart.clone();
